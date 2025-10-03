@@ -1,0 +1,8 @@
+	    1. `git commit`: creates a snapshot of previously created files
+            2. `git branch`: points to a specific commit
+            3. `git checkout`: "checks out" a branch
+            4. `git pull`: "pulls" the new contents in a clone to the original
+            5. `git push`: "pushes" the contents of the original to the clone
+            6. `git merge`: merges two branches together and makes a resultant commit
+            7. `git rebase`: makes a branch into a commit as the newest commit
+            8. `git fetch`: puts the non-similar contents of the clone onto the original
