@@ -86,7 +86,7 @@ static void ble_on_advertisement_received(const bt_addr_le_t* addr, int8_t rssi,
     bt_data_parse(ad, ble_get_adv_device_name_cb, name);
     printk("%s",name);
     printk("%p", addr);
-    bt_addr_le_to_str(addr, ad, sizeof(ad));// not sure if this is right
+    bt_addr_le_to_str(rssi, ad, sizeof(ad));// not sure if this is right
     printk("Connected: %s\n", ad);
     if(rssi < -50){
       return;
