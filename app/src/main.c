@@ -39,7 +39,7 @@ static const struct spi_config spi_cfg ={
 
 static void lcd_cmd(uint8_t cmd, struct spi_buf * data){
   struct spi_buf cmd_buf[1] ={{&cmd, 1}};
-  struct spi_buf_set cmd_set = {{cmd_buf, 1}};
+  struct spi_buf_set cmd_set = {cmd_buf, 1};
   
   gpio_pin_set_dt(&dcx_gpio, 0);
   spi_write(dev, &spi_cfg, &cmd_set);
