@@ -68,6 +68,12 @@ int main(void) {
     return 0;
   }
 
+  lcd_cmd(CMD_SOFTWARE_RESET, NULL);
+  k_msleep(120);
+  lcd_cmd(CMD_SLEEP_OUT, NULL);
+  lcd_cmd(CMD_DISPLAY_ON, NULL);
+
+
   uint8_t column_data[] = {0x00,0x95,0x00,0x9f};
   uint8_t row_data[] = {0x00,0x75,0x00,0x7f};
   uint8_t color_data[300];
@@ -79,11 +85,11 @@ int main(void) {
   struct spi_buf column_data_buf = {column_data, 4};
   struct spi_buf row_data_buf = {row_data, 4};
   struct spi_buf color_data_buf = {color_data, 300};
-  lcd_cmd(CMD_SOFTWARE_RESET, NULL);
-  k_msleep(120);
-  lcd_cmd(CMD_SLEEP_OUT, NULL);
-  lcd_cmd(CMD_DISPLAY_ON, NULL);
 
+  lcd_cmd(CMD_COLUMN_ADDRESS_SET, &column_data_buf);
+  lcd_cmd(CMD_ROW_ADDRESS_SET, &row_data_buf);
+  lcd_cmd(CMD_MEMORY_WRITE, &color_data_buf);
+  
   while(1) {
     k_msleep(SLEEP_MS);
   }
