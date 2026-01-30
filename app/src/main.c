@@ -5,9 +5,9 @@
 #include <inttypes.h>
 
 #include <zephyr/kernel.h>
+#include <zephyr/sys/printk.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/display.h>
-#include <zephyr/sys/printk.h>
 
 #include <lvgl.h>
 
@@ -15,18 +15,17 @@
 #include "LED.h"
 #include "lv_data_obj.h"
 
-
 #define SLEEP_MS 1
 
 static const struct device *display_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));
-static lvl_obj_t *screen =NULL;
+static lv_obj_t *screen = NULL;
 
 int main(void) {
    if (!device_is_ready(display_dev)) {
     return 0;
   }
   screen = lv_screen_active();
-  if (screen = NULL) {
+  if (screen == NULL) {
     return 0;
   }
   if (0 > BTN_init()) {
