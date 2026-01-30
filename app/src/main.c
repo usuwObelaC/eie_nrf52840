@@ -18,7 +18,7 @@
 
 #define SLEEP_MS 1
 
-static const struct device *display_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_isplay));
+static const struct device *display_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_display));
 static lvl_obj_t *screen =NULL;
 
 int main(void) {
