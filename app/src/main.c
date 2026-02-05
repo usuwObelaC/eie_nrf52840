@@ -34,8 +34,17 @@ int main(void) {
   if (0 > LED_init()) {
     return 0;
   }
-  lv_obj_t *label = lv_label_create(screen);
-  lv_label_set_text(label, "HEllo World");
+  for(uint8_t i = 0; i < NUM_LEDS; i++){
+    lv_obj_t *ui_btn = lv_button_create(screen);
+
+    lv_obj_align(ui_btn, LV_ALIGN_CENTER, 50 * (i % 2 ? 1 : -1), 20 * (i < 2 ? -1 : 1));
+    lv_obj_t *button_label = lv_label_create(ui_btn);
+    char label_text[10];
+    snprintf(label_text, 10, "LED %d", i);
+    lv_label_set_text(button_label, label_text);
+    lv_obj_align(button_label,LV_ALIGN_CENTER, 0,0);
+  }
+  
   display_blanking_off(display_dev);
 
   
